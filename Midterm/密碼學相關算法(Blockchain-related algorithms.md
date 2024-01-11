@@ -385,7 +385,7 @@ digest = h0 append h1 append h2 append h3 append h4 append h5 append h6 append h
        = B94D27B9934D3E08A52E52D7DA7DABFAC484EFE37A5380EE9088F7ACE2EFCDE9
 ```
 
-![hash1](https://hackmd.io/_uploads/rkDGgxpuT.png)
+![hash1](https://github.com/ceen123/alg112a/blob/770170c39756b1d4e02e6a54a437fc5313390129/Midterm/hash1.PNG)
 
 
 
