@@ -1,3 +1,9 @@
+
+#refrence 
+#https://www.geeksforgeeks.org/python-program-for-rat-in-a-maze-backtracking-2/
+#chat gpt
+
+
 def safe(maze, x, y):
     return x >= 0 and x < len(maze) and y >= 0 and y < len(maze[0]) and (maze[x][y] == 0 or maze[x][y] == 'C')
 
