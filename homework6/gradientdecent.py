@@ -1,39 +1,22 @@
-import numpy as np
+def vecfunc(p):
+    return sum(x**2 for x in p)
 
-def df(f, p, k, step=1e-6):
-    p1 = p.copy()
-    p1[k] = p[k] + step
-    return (f(p1) - f(p)) / step
-
-def grad(f, p):
-    gp = np.zeros_like(p, dtype=float)
-    for k in range(len(p)):
-        gp[k] = df(f, p, k)
-    return gp
-
-def gradient_descent(f, initial_point, learning_rate=0.01, epsilon=1e-6, max_iterations=1000):
-    current_point = np.array(initial_point, dtype=float)
+def grad_desc(f, init_pt, lr=0.01, eps=1e-6, max_iter=1000):
+    pt = list(init_pt)
     
-    for i in range(max_iterations):
-        gradient = grad(f, current_point)
-        current_point -= learning_rate * gradient
+    for i in range(max_iter):
+        grad = [2 * x for x in pt]
+        pt = [x - lr * g for x, g in zip(pt, grad)]
         
-       
-        if np.linalg.norm(gradient) < epsilon:
-            print(f"Converged after {i+1} iterations.")
+        if all(abs(g) < eps for g in grad):
             break
-    
-    return current_point
-    
-def vector_function(p):
-    return np.sum(np.square(p))
 
-initial_point = np.array([1.0, 2.0])
+    return pt
 
-learning_rate = 0.1
+init_pt = [1.0, 2.0]
+lr = 0.1
 
-result = gradient_descent(vector_function, initial_point, learning_rate)
+result = grad_desc(vecfunc, init_pt, lr)
 
 print("Optimal point:", result)
-print("Optimal value:", vector_function(result))
-
+print("Optimal value:", vecfunc(result))
